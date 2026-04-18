@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+server/node_modules/
+.venv/
+*.pth
+*.json (if large dataset)
+
+# Build outputs
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Temp
+*.tmp
+*.temp
+
+# Netlify
+.netlify
+
+# Kiro
+.kiro/
