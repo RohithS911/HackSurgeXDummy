@@ -1,0 +1,941 @@
+.advisory-report {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  animation: fade-in-up 0.4s ease-out;
+}
+
+.report-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-normal);
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-2px);
+}
+
+.report-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.report-section {
+  background: var(--bg-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-glass);
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.report-section:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.report-section.highlight {
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.1) 0%, rgba(20, 20, 25, 0.7) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+}
+
+.report-section.collapsible {
+  cursor: pointer;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+
+.section-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-header h2 {
+  flex: 1;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.toggle-icon {
+  font-size: 1rem;
+  color: var(--text-tertiary);
+  transition: transform 0.3s ease;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.section-content {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+  cursor: default;
+}
+
+.location-section .section-content {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.location-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+}
+
+.info-item .label {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.info-item .value {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.fertility-high {
+  color: #34d399;
+}
+
+.fertility-medium {
+  color: #fbbf24;
+}
+
+.fertility-low {
+  color: #f87171;
+}
+
+.interpretation,
+.explanation {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 12px 0 0 0;
+}
+
+/* Deficiency Tags */
+.deficiency-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.deficiency-tag {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.deficiency-tag.none {
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.deficiency-tag.deficient {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* NPK Display */
+.npk-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.npk-label {
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.npk-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Dosage Grid */
+.dosage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dosage-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.nutrient-name {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.nutrient-dose {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Lists */
+.section-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 20px 0 12px 0;
+}
+
+.schedule-list,
+.organic-list,
+.recommendations-list,
+.tips-list,
+.mitigation-list {
+  margin: 0;
+  padding-left: 24px;
+  color: var(--text-secondary);
+}
+
+.schedule-list li,
+.organic-list li,
+.recommendations-list li,
+.tips-list li,
+.mitigation-list li {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+/* Crop Cards */
+.crops-detailed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.crop-card {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.crop-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.crop-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.crop-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+/* Irrigation Details */
+.current-status {
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.irrigation-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text-primary);
+}
+
+.detail-item strong {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+/* Risk Cards */
+.risks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.risk-card {
+  padding: 16px;
+  border-radius: 12px;
+  border-left: 4px solid;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.risk-card.severity-high {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+}
+
+.risk-card.severity-medium {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: #f59e0b;
+}
+
+.risk-card.severity-low {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #10b981;
+}
+
+.risk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.risk-type {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.risk-severity {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.risk-description {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+/* Practice Cards */
+.practices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.practice-card {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+}
+
+.practice-card h4 {
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.practice-card p {
+  margin: 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.practice-card .benefit {
+  color: var(--text-primary);
+}
+
+.practice-card .implementation {
+  color: var(--text-secondary);
+}
+
+/* Vegetation Info */
+.vegetation-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.health-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  border: 1px solid transparent;
+}
+
+.health-badge.health-excellent {
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.health-badge.health-good {
+  background: rgba(5, 150, 105, 0.1);
+  color: #10b981;
+  border-color: rgba(5, 150, 105, 0.2);
+}
+
+.health-badge.health-fair {
+  background: rgba(245, 158, 11, 0.1);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.health-badge.health-poor {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .advisory-report {
+    padding: 16px;
+  }
+
+  .report-title {
+    font-size: 1.2rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dosage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .crops-detailed {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Loan Schemes Section */
+.loan-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 12px; }
+
+.loan-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.loan-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+.loan-header h4 { margin: 0; font-size: 0.95rem; color: var(--text-primary, #fff); }
+
+.loan-type-badge {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.loan-government { background: rgba(16,185,129,0.2); color: #10b981; }
+.loan-bank { background: rgba(59,130,246,0.2); color: #60a5fa; }
+.loan-nbfc { background: rgba(245,158,11,0.2); color: #fbbf24; }
+.loan-insurance-linked { background: rgba(139,92,246,0.2); color: #a78bfa; }
+
+.loan-provider { font-size: 0.78rem; color: var(--text-secondary, #aaa); margin: 4px 0 10px; }
+
+.loan-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.loan-detail { display: flex; flex-direction: column; gap: 2px; }
+.loan-label { font-size: 0.7rem; color: var(--text-tertiary, #888); }
+.loan-value { font-size: 0.82rem; font-weight: 600; color: var(--text-primary, #fff); }
+
+.loan-subsidy { font-size: 0.8rem; color: #10b981; margin: 6px 0; }
+
+.loan-benefits { list-style: none; padding: 0; margin: 8px 0; }
+.loan-benefits li { font-size: 0.8rem; color: var(--text-secondary, #aaa); padding: 2px 0; }
+
+.loan-apply-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 14px;
+  background: rgba(16,185,129,0.15);
+  border: 1px solid #10b981;
+  border-radius: 8px;
+  color: #10b981;
+  font-size: 0.82rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.loan-disclaimer { font-size: 0.72rem; color: var(--text-tertiary, #888); margin-top: 14px; font-style: italic; }
+
+/* ─────────────────────────────────────────────────────────────────
+   HIGHLIGHT-GOLD variant (Cost Breakdown header)
+───────────────────────────────────────────────────────────────── */
+.report-section.highlight-gold {
+  background: linear-gradient(145deg, rgba(251, 191, 36, 0.08) 0%, rgba(20, 20, 25, 0.7) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.07);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   COST BREAKDOWN TABLE
+───────────────────────────────────────────────────────────────── */
+.section-note {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+.cost-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cost-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto 120px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+}
+
+.cost-icon { font-size: 1.1rem; }
+
+.cost-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.cost-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.cost-bar-wrap {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cost-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.cost-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding: 12px 14px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 10px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cost-total-val {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   PROFIT ESTIMATION
+───────────────────────────────────────────────────────────────── */
+.profit-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.profit-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+}
+
+.ps-label {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ps-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ps-value.primary { color: var(--primary, #10b981); }
+.ps-value.green   { color: #34d399; }
+.ps-value.red     { color: #f87171; }
+
+.profit-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: rgba(16, 185, 129, 0.07);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+
+.profit-emoji { font-size: 2.2rem; }
+
+.profit-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.profit-amount {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.profit-subtext {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+}
+
+.return-ratio-badge {
+  padding: 8px 14px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #34d399;
+  white-space: nowrap;
+}
+
+.ratio-statement {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   RISK ANALYSIS
+───────────────────────────────────────────────────────────────── */
+.risk-level-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  border: 1px solid transparent;
+}
+
+.risk-level-banner[data-level="Low"] {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.risk-level-banner[data-level="Medium"] {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.risk-level-banner[data-level="High"] {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.risk-level-icon { font-size: 1.5rem; }
+
+.risk-level-text {
+  flex: 1;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.risk-badge {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.risk-badge-low    { background: rgba(16,185,129,0.18); color: #34d399; }
+.risk-badge-medium { background: rgba(245,158,11,0.18); color: #fbbf24; }
+.risk-badge-high   { background: rgba(239,68,68,0.18);  color: #f87171; }
+
+.risk-reasons-list {
+  padding-left: 20px;
+  color: var(--text-secondary);
+  margin: 0 0 14px 0;
+}
+
+.risk-reasons-list li { padding: 4px 0; font-size: 0.92rem; line-height: 1.5; }
+
+.ratio-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
+.ratio-statement.big {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   WEATHER IMPACT
+───────────────────────────────────────────────────────────────── */
+.weather-impact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.wi-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+}
+
+.wi-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+
+.wi-row p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.weather-warnings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.weather-warning-item {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-left: 3px solid #ef4444;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: #fca5a5;
+  line-height: 1.4;
+}
+
+.wi-summary {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LOAN SECTION ENHANCEMENTS
+───────────────────────────────────────────────────────────────── */
+
+/* Recommended Loan Option Banner */
+.recommended-loan-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(251,191,36,0.12) 0%, rgba(20,20,25,0.7) 100%);
+  border: 1px solid rgba(251,191,36,0.35);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 0 16px rgba(251,191,36,0.08);
+}
+
+.rl-star { font-size: 1.5rem; flex-shrink: 0; }
+
+.rl-content { display: flex; flex-direction: column; gap: 4px; }
+
+.rl-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fbbf24;
+}
+
+.rl-text {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Best-match loan card glow */
+.loan-card.loan-best-match {
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.12);
+  background: linear-gradient(145deg, rgba(251,191,36,0.06) 0%, rgba(20,20,25,0.8) 100%);
+}
+
+.best-match-star { color: #fbbf24; }
+
+.loan-badges { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+
+/* Repayment ease badges */
+.ease-badge {
+  font-size: 0.62rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.ease-easy     { background: rgba(16,185,129,0.18); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+.ease-moderate { background: rgba(245,158,11,0.18); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+.ease-risky    { background: rgba(239,68,68,0.18);  color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .cost-row { grid-template-columns: 24px 1fr auto; }
+  .cost-bar-wrap { display: none; }
+  .profit-stats-grid { grid-template-columns: 1fr; }
+}
+

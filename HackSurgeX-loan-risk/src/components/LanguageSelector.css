@@ -1,0 +1,15 @@
+.language-selector {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid white;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.language-selector option {
+  background: #4CAF50;
+  color: white;
+}
